@@ -1,0 +1,106 @@
+body{
+    background: url('../images/grass_bg.jpg');
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 22px;
+}
+.container {
+    width: 95%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 1em auto;
+    padding: 1em;
+}
+.area {
+    width: 100%;
+    /*border: 1px solid #ccc;*/
+    display: flex;
+    justify-content: center;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.table {
+    margin: 1em;
+    width: 100%;
+}
+.table > thead {
+    padding: 1em;
+    border-bottom: 1px solid #fff;
+    height: auto;
+}
+.table > thead > tr > th {
+    padding: 1em;
+    text-align: center;
+}
+.table > tbody {
+    padding: 1em;
+    height: auto;
+}
+.table > tbody > tr > td {
+    padding: 1em;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+.generateArea {
+    width: 100%;
+    margin: 1em auto;
+    display: block;
+}
+.button {
+    padding: 1rem 2rem;
+    margin: 0.25rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    width: 100%;
+}
+
+.button-green{
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+.button-green:hover{
+    color: #fff;
+    background-color: #3c6e71;
+    border-color: #146c43;
+}
+.button-red{
+    color: #fff;
+    background-color: #e63946;
+    border-color: #d62828;
+}
+.button-red:hover{
+    color: #fff;
+    background-color: #ae2012;
+    border-color: #d62828;
+}
+
+.week{
+    margin: 1em auto;
+}
+.teams{
+    display: flex;
+    width: 100%;
+}
+.teams .team{
+    width: 200px;
+    text-align: center;
+    padding: 0.50em;
+    margin: 0 1em;
+    float: left;
+    display: block;
+}
+.teams .score{
+    text-align: center;
+    padding: 0.50em;
+    margin: 0 1em;
+    border: 2px solid #264653;
+    float: left;
+    display: inline-block;
+}
+
