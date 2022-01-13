@@ -2065,6 +2065,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 //
 //
 //
@@ -2075,6 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2088,7 +2090,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchGames: function fetchGames() {
       var _this = this;
 
-      fetch('/api/v1/get-games').then(function (res) {
+      fetch('/api/v1/get-fixture').then(function (res) {
         return res.json();
       }).then(function (res) {
         _this.games = res;
@@ -2096,6 +2098,13 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    _app__WEBPACK_IMPORTED_MODULE_0__.eventBus.$on('games', function (games) {
+      _this2.games = games;
+    });
   }
 });
 
@@ -2121,16 +2130,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      showButton: true
+      disableButton: false
     };
   },
   methods: {
     generateTeams: function generateTeams() {
+      var _this = this;
+
       fetch('/api/v1/generate-teams').then(function (res) {
         return res.json();
       }).then(function (res) {
-        // this.showButton = false
-        _app__WEBPACK_IMPORTED_MODULE_0__.eventBus.$emit('teams', res);
+        _app__WEBPACK_IMPORTED_MODULE_0__.eventBus.$emit('teams', res.teams);
+        _app__WEBPACK_IMPORTED_MODULE_0__.eventBus.$emit('games', res.games);
+        _this.disableButton = true;
       });
     }
   }
@@ -2192,13 +2204,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       fetch('/api/v1/get-teams').then(function (res) {
-        return res.json();
-      }).then(function (res) {
-        _this.teams = res;
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-      fetch('/api/v1/get-fixture').then(function (res) {
         return res.json();
       }).then(function (res) {
         _this.teams = res;
@@ -20018,8 +20023,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {}
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "week" },
+    _vm._l(_vm.games, function (game) {
+      return _c("div", { staticClass: "teams" }, [
+        _c("div", { staticClass: "team" }, [_vm._v(_vm._s(game.home))]),
+        _vm._v(" "),
+        _c("div", { staticClass: "score" }, [
+          _vm._v(_vm._s(game.home_score) + " : " + _vm._s(game.away_score)),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "team" }, [_vm._v(_vm._s(game.away))]),
+      ])
+    }),
+    0
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -20044,15 +20070,17 @@ var render = function () {
   return _c(
     "button",
     {
-      staticClass: "button button-green",
-      attrs: { hidden: !_vm.showButton },
+      class: _vm.disableButton
+        ? "button button-secondary"
+        : "button button-green",
+      attrs: { disabled: _vm.disableButton },
       on: {
         click: function ($event) {
           return _vm.generateTeams()
         },
       },
     },
-    [_vm._v("Generate Teams")]
+    [_vm._v("Generate Fixture")]
   )
 }
 var staticRenderFns = []

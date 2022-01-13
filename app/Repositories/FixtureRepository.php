@@ -9,6 +9,7 @@
     use App\Models\Team;
     use App\Models\Week;
     use Carbon\Carbon;
+    use Illuminate\Database\Eloquent\Collection;
 
     class FixtureRepository implements FixtureInterface
     {
@@ -25,9 +26,9 @@
             $this->model = $model;
         }
 
-        public function getFixture(): array
+        public function getFixture(): Collection
         {
-            return $this->model->get()->toArray();
+            return $this->model->get();
         }
 
         /**

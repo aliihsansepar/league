@@ -17,7 +17,7 @@ body{
     /*border: 1px solid #ccc;*/
     display: flex;
     justify-content: center;
-    max-height: 600px;
+    max-height: 700px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -78,6 +78,12 @@ body{
     color: #fff;
     background-color: #ae2012;
     border-color: #d62828;
+}
+
+.button-secondary{
+    color: #fff;
+    background-color: #7b7b7b;
+    border-color: #a1a1a1;
 }
 
 .week{

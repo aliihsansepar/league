@@ -2,7 +2,7 @@
 
     namespace App\Interfaces;
 
-    interface MatchInterface
+    interface GameInterface
     {
 
     }

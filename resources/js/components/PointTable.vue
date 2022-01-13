@@ -35,18 +35,10 @@
         },
         created() {
             this.fetchTeams();
-
         },
         methods: {
             fetchTeams() {
                 fetch('/api/v1/get-teams')
-                    .then(res => res.json())
-                    .then(res => {
-                        this.teams = res;
-                    })
-                    .catch(err => console.log(err));
-
-                fetch('/api/v1/get-fixture')
                     .then(res => res.json())
                     .then(res => {
                         this.teams = res;

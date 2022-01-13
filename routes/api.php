@@ -22,4 +22,5 @@ Route::prefix('v1')->group(function () {
     Route::get('/get-teams', [\App\Http\Controllers\TeamController::class, 'getTeams'])->name('getTeams');
     Route::get('/generate-fixture', [\App\Http\Controllers\FixtureController::class, 'generateFixture'])->name('generateFixture');
     Route::get('/get-fixture', [\App\Http\Controllers\FixtureController::class, 'getFixture'])->name('getFixture');
+    Route::get('/get-games', [\App\Http\Controllers\GameController::class, 'getGames'])->name('getGames');
 });

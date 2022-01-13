@@ -1,5 +1,5 @@
 <template>
-    <button class="button button-green" :hidden="!showButton" @click="generateTeams()">Generate Teams</button>
+    <button :class="disableButton ? 'button button-secondary' : 'button button-green' " :disabled="disableButton" @click="generateTeams()">Generate Fixture</button>
 </template>
 
 <script>
@@ -8,7 +8,7 @@
     export default {
         data() {
             return {
-                showButton: true
+                disableButton: false,
             }
         },
         methods: {
@@ -16,8 +16,9 @@
                 fetch('/api/v1/generate-teams')
                     .then(res => res.json())
                     .then(res => {
-                        // this.showButton = false
-                        eventBus.$emit('teams', res);
+                        eventBus.$emit('teams', res.teams);
+                        eventBus.$emit('games', res.games);
+                        this.disableButton = true;
                     })
             }
         }

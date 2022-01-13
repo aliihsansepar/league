@@ -22,4 +22,16 @@
         {
             return $this->belongsToMany(Game::class, 'weeks', 'id', 'game_id');
         }
+
+        public function getHomeAttribute()
+        {
+            $team = Team::find($this->home_team_id);
+            return $team->name;
+        }
+
+        public function getAwayAttribute()
+        {
+            $team = Team::find($this->away_team_id);
+            return $team->name;
+        }
     }

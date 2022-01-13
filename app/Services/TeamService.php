@@ -61,9 +61,7 @@
             return $teams_stats;
         }
 
-        /**
-         * @return array
-         */
+        /** @return array */
         public function generatePower(): array
         {
             $attack_power = rand(25, 90);
@@ -74,13 +72,12 @@
             ];
         }
 
-        /**
-         * @return array
-         */
+        /** @return array */
         public function getTeams(): array
         {
              return $this->teamRepository->getTeams();
         }
+
         /**
          * @param int $id
          * @return Model

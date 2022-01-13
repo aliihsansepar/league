@@ -20,7 +20,18 @@
 
         public function getFixture()
         {
-            return $this->fixtureRepository->getFixture();
+            $fixtures = [];
+            $fixture = $this->fixtureRepository->getFixture();
+            foreach ($fixture as $fxtr) {
+                $fixtures[] = [
+                    'week' => $fxtr->week_id,
+                    'home' => $fxtr->home,
+                    'away' => $fxtr->away,
+                    'home_score' => '--',
+                    'away_score' => '--',
+                ];
+            }
+            return $fixtures;
         }
 
         /**
@@ -73,9 +84,6 @@
 
             $fixture = array_merge($league_first_half_fixture, $league_second_half_fixture);
 
-            $this->fixtureRepository->storeFixture($fixture);
-
-
-
+            return $this->fixtureRepository->storeFixture($fixture);
         }
     }
