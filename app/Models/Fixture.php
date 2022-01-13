@@ -15,6 +15,11 @@
 
         public function weeks()
         {
-            return $this->hasMany(week::class);
+            return $this->hasMany(Week::class);
+        }
+
+        public function games()
+        {
+            return $this->belongsToMany(Game::class, 'weeks', 'id', 'game_id');
         }
     }

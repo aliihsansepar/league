@@ -22,18 +22,7 @@
             <point-table></point-table>
         </div>
         <div class="area">
-            <div class="week">
-                <div class="teams">
-                    <div class="team">Arctic Monkeys</div>
-                    <div class="score">1 : 0</div>
-                    <div class="team">Zubidubi Donkeys</div>
-                </div>
-                <div class="teams">
-                    <div class="team">BamBam Lions</div>
-                    <div class="score">4 : 2</div>
-                    <div class="team">HonkHonk Pigs</div>
-                </div>
-            </div>
+           <games></games>
         </div>
     </div>
 </div>
